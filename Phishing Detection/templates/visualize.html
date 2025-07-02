@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #4CAF50, #2196F3);
+            color: #333;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            margin: 30px auto;
+            max-width: 1000px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/history">Prediction History</a>
+        <a href="/visualize">Visualize</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1>Data Visualization</h1>
+        <div>
+            <h2>Malicious vs Benign URLs</h2>
+            {{ pie_chart|safe }}
+        </div>
+        <div>
+            <h2>Submission Frequency by Hour</h2>
+            {{ line_chart|safe }}
+        </div>
+    </div>
+</body>
+</html>

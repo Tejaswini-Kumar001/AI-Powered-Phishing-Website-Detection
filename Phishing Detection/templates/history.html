@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #4CAF50, #2196F3);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 95%;
+            max-width: 1000px;
+            color: #333;
+            margin-top: 70px; /* Added margin to avoid navbar overlap */
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #e6ffe6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 20px;
+                margin-top: 80px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/history">Prediction History</a>
+        <a href="/visualize">Visualize</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1>Prediction History</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>URL</th>
+                <th>Prediction</th>
+                <th>Timestamp</th>
+            </tr>
+            {% if history %}
+    {% for entry in history %}
+    <tr>
+        <td>{{ entry[0] }}</td>
+        <td>{{ entry[1] }}</td>
+        <td>{{ entry[2] }}</td>
+        <td>{{ entry[3] }}</td>
+    </tr>
+    {% endfor %}
+{% else %}
+    <tr>
+        <td colspan="4">No prediction history found.</td>
+    </tr>
+{% endif %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Malware Detection</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>File Malware Detection</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Upload a file:</label>
+            <input type="file" id="file" name="file" required>
+            <button type="submit">Scan File</button>
+        </form>
+
+        {% if file_error %}
+            <p class="error">{{ file_error }}</p>
+        {% endif %}
+
+        {% if file_status %}
+            <p class="status">File Status: <strong>{{ file_status }}</strong></p>
+        {% endif %}
+
+        {% if details %}
+            <h2>Scan Details:</h2>
+            <pre>{{ details | tojson }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
